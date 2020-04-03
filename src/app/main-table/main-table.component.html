@@ -1,0 +1,42 @@
+<table class="table">
+  <thead>
+      <tr class='table__row'>
+          <td class='table__column__checked'></td>
+          <td>GROUP</td>
+          <td>NAME</td>
+          <td>PRICE</td>
+      </tr>
+  </thead>
+  <tbody>
+      <tr class='table__row__filter'>
+        <td class='table__filter'></td>
+        <td class='table__filter'>
+          <select (click)="selectGroup(selectedGroup.value)" #selectedGroup>
+            <option value="select">SELECT GROUP</option>
+            <option value="Fruits">FRUITS</option>
+            <option value="Vegetables">VEGETABLES</option>
+            <option value="Milk food">MILK FOOD</option>
+          </select>
+        </td>
+        <td class='table__filter'>
+          <button (click)="sortGoodsByName(sortButton.textContent)" class="table__sort-button" #sortButton>SORT</button>
+        </td>
+        <td class='table__filter'>
+          <select (click)="sortGoodsByPrice(selectedSorting.value)" #selectedSorting>
+            <option value="select">SORT BY PRICE</option>
+            <option value="decrease">ON DECREASE</option>
+            <option value="increase">ON INCREASE</option>
+          </select>
+        </td>
+      </tr>
+      <tr *ngFor="let product of products" class="table__main-content">
+        <td><input type='checkbox' value="{{product.name}}" class="checkbox"></td>
+        <td>{{product.group}}</td>
+        <td>{{product.name}}</td>
+        <td class='table__price'>{{product.price}}</td>
+      </tr>
+  </tbody>
+</table>
+<div>
+  <button class='button__to-busket' (click)='addToBusket()'>Add to busket</button>
+</div>

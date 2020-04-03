@@ -1,0 +1,72 @@
+* {
+  font-family: Arial, sans-serif;
+}
+.table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  height: auto;
+  border-collapse: collapse;
+}
+thead {
+  font-size: 20px;
+  color: gray;
+}
+td {
+  border: 1px solid lightgray;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.table__column__checked {
+  width: 30px;
+}
+.table__filter {
+  padding: 0;
+}
+.table__row__filter {
+  background-color: lightslategrey;
+}
+.table__main-content {
+  font-size: 14px;
+}
+.table__price {
+  font-size: 16px;;
+}
+select, .table__sort-button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  text-align-last: center;
+  color: white;
+  background-color: lightslategray;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.table__sort-button:hover {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+option {
+  color: white;
+}
+div {
+  display: flex;
+  justify-content: center;
+}
+.button__to-busket {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 130px;
+  height: 40px;
+  background-color: lightslategray;
+  color: white;
+  border: 0;
+}
+.button__to-busket:hover {
+  background-color: white;
+  color: grey;
+  font-weight: bold;
+  border: 1px solid grey;
+}
