@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Products } from '../../domain/Product';
 
 @Component({
   selector: 'app-main-table',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-table.component.css']
 })
 export class MainTableComponent implements OnInit {
-  goods = [
+  goods: Products = [
     {group: 'Fruits', name: 'Apples', price: 55},
     {group: 'Fruits', name: 'Oranges', price: 60},
     {group: 'Vegetables', name: 'Tomatoes', price: 90},
@@ -20,16 +21,16 @@ export class MainTableComponent implements OnInit {
     {group: 'Vegetables', name: 'Eggplants', price: 140},
     {group: 'Vegetables', name: 'Pumpkin', price: 45},
   ];
-  products = this.goods.slice();
+  products: Products = this.goods.slice();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  sortGoodsByName(sortButtonValue) {
+  sortGoodsByName(sortButtonValue: string): void {
     if (sortButtonValue === 'SORT') {
-      const sortedNames = [];
+      const sortedNames: string[] = [];
       const sortedProducts = [];
       this.products.forEach(product => {
         sortedNames.push(product.name);
@@ -49,7 +50,7 @@ export class MainTableComponent implements OnInit {
     }
   }
 
-  selectGroup(selectedGroup) {
+  selectGroup(selectedGroup: string): void {
     if (selectedGroup === 'Fruits' || selectedGroup === 'Vegetables' || selectedGroup === 'Milk food') {
       const productsSelectedByGroup = this.goods.filter(product => {
         return product.group === selectedGroup;
@@ -60,8 +61,8 @@ export class MainTableComponent implements OnInit {
     }
   }
 
-  sortGoodsByPrice(selectedSorting) {
-    const sortedPrice = [];
+  sortGoodsByPrice(selectedSorting: string): void {
+    const sortedPrice: number[] = [];
     const sortedProducts = [];
     this.products.forEach(product => {
       sortedPrice.push(product.price);
@@ -86,7 +87,7 @@ export class MainTableComponent implements OnInit {
     }
   }
 
-  addToBusket() {
+  addToBusket(): void {
     const checkedProducts = [];
     const checkedProductNames = Array.from(document.querySelectorAll('.checkbox:checked')).map(elem => {
       return elem.value;
