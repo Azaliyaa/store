@@ -93,7 +93,7 @@ export class MainTableComponent implements OnInit {
   onCheckBoxChange(value: string): void {
     if (!this.checkedProductsNames.includes(value)) {
       this.checkedProductsNames.push(value);
-    } else if (this.checkedProductsNames.includes(value)) {
+    } else {
       this.checkedProductsNames.splice(this.checkedProductsNames.indexOf(value), 1);
     }
   }
