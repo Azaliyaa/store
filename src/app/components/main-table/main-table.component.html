@@ -12,7 +12,7 @@
         <td class='table__filter'></td>
         <td class='table__filter'>
           <select (click)="selectGroup(selectedGroup.value)" #selectedGroup>
-            <option value="select">SELECT GROUP</option>
+            <option value="reset">SELECT GROUP</option>
             <option value="Fruits">FRUITS</option>
             <option value="Vegetables">VEGETABLES</option>
             <option value="Milk food">MILK FOOD</option>
@@ -23,14 +23,16 @@
         </td>
         <td class='table__filter'>
           <select (click)="sortGoodsByPrice(selectedSorting.value)" #selectedSorting>
-            <option value="select">SORT BY PRICE</option>
+            <option value="reset">SORT BY PRICE</option>
             <option value="decrease">ON DECREASE</option>
             <option value="increase">ON INCREASE</option>
           </select>
         </td>
       </tr>
       <tr *ngFor="let product of products" class="table__main-content">
-        <td><input type='checkbox' value="{{product.name}}" class="checkbox"></td>
+        <td>
+          <input type='checkbox' class="checkbox" (change)='onCheckBoxChange(product.name)'>
+        </td>
         <td>{{product.group}}</td>
         <td>{{product.name}}</td>
         <td class='table__price'>{{product.price}}</td>

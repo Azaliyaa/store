@@ -10,6 +10,7 @@ import { ProductsService } from '../../services/products.service';
 export class MainTableComponent implements OnInit {
   goods: Products = this.productsService.GetWithParent();
   products: Products = this.goods.slice();
+  checkedProductsNames = [];
 
   constructor(private productsService: ProductsService) { }
 
@@ -44,7 +45,7 @@ export class MainTableComponent implements OnInit {
         return product.group === selectedGroup;
       });
       this.products = productsSelectedByGroup;
-    } else if (selectedGroup === 'select') {
+    } else if (selectedGroup === 'reset') {
       this.products = this.goods.slice();
     }
   }
@@ -70,18 +71,15 @@ export class MainTableComponent implements OnInit {
       this.products = sortedProducts;
     } else if (selectedSorting === 'decrease') {
       this.products = sortedProducts.reverse();
-    } else if (selectedSorting === 'select') {
+    } else if (selectedSorting === 'reset') {
       this.products = this.goods.slice();
     }
   }
 
   addToBusket(): void {
     const checkedProducts = [];
-    const checkedProductNames = Array.from(document.querySelectorAll('.checkbox:checked')).map(elem => {
-      return elem.value;
-    });
     this.goods.forEach(product => {
-      checkedProductNames.forEach(elem => {
+      this.checkedProductsNames.forEach(elem => {
         if (product.name === elem) {
           checkedProducts.push(product);
         }
@@ -89,6 +87,14 @@ export class MainTableComponent implements OnInit {
     });
     for (const check of checkedProducts) {
         this.products.splice(this.products.indexOf(check), 1);
+    }
+  }
+
+  onCheckBoxChange(value: string): void {
+    if (!this.checkedProductsNames.includes(value)) {
+      this.checkedProductsNames.push(value);
+    } else if (this.checkedProductsNames.includes(value)) {
+      this.checkedProductsNames.splice(this.checkedProductsNames.indexOf(value), 1);
     }
   }
 }

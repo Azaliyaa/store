@@ -6,7 +6,7 @@ export class ProductsService {
 
   constructor() {}
 
-  GetWithParent() {
+  GetWithParent(): Products {
     const products: Products = [
       {group: 'Fruits', name: 'Apples', price: 55},
       {group: 'Fruits', name: 'Oranges', price: 60},
