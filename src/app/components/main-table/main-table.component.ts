@@ -78,7 +78,7 @@ export class MainTableComponent implements OnInit {
 
   addToBusket(): void {
     const checkedProducts = [];
-    this.goods.forEach(product => {
+    this.products.forEach(product => {
       this.checkedProductsNames.forEach(elem => {
         if (product.name === elem) {
           checkedProducts.push(product);
