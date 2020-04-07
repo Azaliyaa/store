@@ -8,7 +8,7 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./main-table.component.css']
 })
 export class MainTableComponent implements OnInit {
-  goods: Products = this.productsService.GetWithParent();
+  goods: Products = this.productsService.getProducts();
   products: Products = this.goods.slice();
   checkedProductsNames = [];
 
